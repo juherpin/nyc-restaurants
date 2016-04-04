@@ -36,6 +36,8 @@ Pensez aussi à bien documenter votre code.
 3. Afficher les 10 derniers commentaires du site (tout restaurant confondu)
 4. Les restaurants listés sont des liens vers les pages de vue correspondantes.
 
+![Home](http://i.imgur.com/z2S1OQn.png)
+
 #### Liste de restaurants
 
 1. Doit être accessible sur l'URL de type : ``http://localhost:3000/restaurants``
@@ -45,6 +47,8 @@ Pensez aussi à bien documenter votre code.
 5. Permettre l'utilisation de filtres avec le type de cuisine et/ou quartier.
 6. Attention, à bien traiter les URL's invalides (page ou filtre inexistant).
 
+![List](http://i.imgur.com/Lzb98L5.png)
+
 #### Vue de restaurants
 
 1. Doit être accessible sur l'URL de type : ``http://localhost:3000/restaurants/view/RESTAURANT_ID``
@@ -52,6 +56,8 @@ Pensez aussi à bien documenter votre code.
 3. Afficher sa localisation sur une map grâce à ses coordonnées geographiques et Google Maps.
 4. Afficher toutes ses notes ainsi que le score moyen et le nombre total de scores.
 5. Afficher un formulaire et une liste de commentaires liés au restaurant.
+
+![View](http://i.imgur.com/VChZwYq.png)
 
 ### Tips
 
@@ -67,7 +73,7 @@ Pensez aussi à bien documenter votre code.
 
 6. A priori, toutes les informations dont vous avez besoin sont dans les documentations en ligne de **Mongoose**, **ExpressJS** et **Jade**.
 
-7. Utilisez **Nodemon** pour éviter de redémarrer le projet en permanence : http://nodemon.io (commande : ``nodemon bin/www` après l'avoir installé en global).
+7. Utilisez **Nodemon** pour éviter de redémarrer le projet en permanence : http://nodemon.io (commande : ``nodemon bin/www`` après l'avoir installé en global).
 
 
 ### Créativité / Prise d'initiatives
