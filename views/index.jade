@@ -3,27 +3,27 @@ extends layout
 
 block content
   h1= title
-  p Welcome to title
-  .row
-    ul.collection.col.s6
-        each val, index in ['zero', 'one', 'two']
-          li.collection-item.avatar
-            img.circle(src='images/yuna.jpg', alt='')
-            span.title val._id.name
-            p
-              | First Line 
-              br
-              |          Second Line
-            a.secondary-content(href='#!')
-              i.material-icons grade
-    ul.collection.col.s6
-        each val, index in ['zero', 'one', 'two']
-          li.collection-item.avatar
-            img.circle(src='images/yuna.jpg', alt='')
-            span.title Title
-            p
-              | First Line 
-              br
-              |          Second Line
-            a.secondary-content(href='#!')
-              i.material-icons grade
+  p Welcome to #{title}
+  //- .row
+  //-   ul.collection.col.s6
+  //-       each val, index in ['zero', 'one', 'two']
+  //-         li.collection-item.avatar
+  //-           img.circle(src='images/yuna.jpg', alt='')
+  //-           span.title val._id.name
+  //-           p
+  //-             | First Line 
+  //-             br
+  //-             |          Second Line
+  //-           a.secondary-content(href='#!')
+  //-             i.material-icons grade
+  //-   ul.collection.col.s6
+  //-       each val, index in ['zero', 'one', 'two']
+  //-         li.collection-item.avatar
+  //-           img.circle(src='images/yuna.jpg', alt='')
+  //-           span.title Title
+  //-           p
+  //-             | First Line 
+  //-             br
+  //-             |          Second Line
+  //-           a.secondary-content(href='#!')
+  //-             i.material-icons grade
