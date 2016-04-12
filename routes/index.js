@@ -2,18 +2,35 @@ var express = require('express');
 var router = express.Router();
 var Restaurant = require('../models/restaurants');
 var Comment = require('../models/comments');
-
-var getLastComment(){
+var Q = require('q');
+var getLastComment =() =>{
+  var deffered = Q.defer()
   Comment
   .find({})
   .populate('restaurant')
-  .exec(function (err, comments) {
+  .sort({'date':-1})
+  .exec( (err, comments)=> {
     if (err){
-      res.json(err)
+      deffered.reject(err)
     }else{
-      res.json(comments)
+      deffered.resolve(comments)
     }
   });
+  return deffered.promise
+}
+
+var getLastComment= (id)=>{
+    var deffered = Q.defer()
+  Comment
+  .find({restaurant:id})
+  .exec( (err, comments)=> {
+    if (err){
+      deffered.reject(err)
+    }else{
+      deffered.resolve(comments)
+    }
+  });
+    return deffered.promise
 }
 
 /* GET home page. */
@@ -35,7 +52,9 @@ router.post('/comment', (req, res, next )=>{
     res.redirect(`/restaurant/${req.body.restaurant}`);
   })
 });
-router.get('/restaurants', function(req, res, next) {
+
+var getBestRestaurants = () =>{
+  var deffered = Q.defer()
   Restaurant.aggregate(
       [
           { $unwind : '$grades' },
@@ -44,13 +63,29 @@ router.get('/restaurants', function(req, res, next) {
       ],
       function(err,result) {
         if(err){
-          res.send(err)
+          deffered.reject(err)
         } else {
-          //res.send(result)
-          res.render('restaurants/index', {restaurants:result , title:'goodMeal'});
+          deffered.resolve(result)
         }
       }
-  );
+  )
+  return deffered.promise
+}
+
+router.get('/restaurants', function(req, res, next) {
+  var restaurants = [];
+  getBestRestaurants()
+  .then((rest)=>{
+    restaurants = rest ;
+    return getLastComment();
+  })
+  .then((comms)=>{
+    res.render('restaurants/index', {restaurants:restaurants, comments:comms , title:'goodMeal'});
+  })
+  .catch((err)=>{
+    res.render('error',{error:err})
+  })
+
   //
 });
 
