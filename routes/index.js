@@ -26,6 +26,7 @@ router.get('/restaurants', function(req, res, next) {
   );
   //
 });
+
 router.get('/restaurant/:id', function(req, res, next) {
   Restaurant.findOne(
     {restaurant_id: req.params.id}, function(err,result) {

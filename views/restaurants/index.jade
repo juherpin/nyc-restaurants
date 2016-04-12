@@ -8,13 +8,14 @@ block content
     ul.collection.col.s6
         each val, index in restaurants
           li.collection-item.avatar
+            h1 #{index+1}
             span.title #{val.name}
             p
-              |  
+              |  #{val.cuisine}
               br
-              |          Second Line
+              |   #{val.grades.score}
             a.secondary-content(href='/restaurant/#{val.restaurant_id}')
-              i.material-icons grade
+              i.large.material-icons zoom_in
     ul.collection.col.s6
         each val, index in ['zero', 'one', 'two']
           li.collection-item.avatar
