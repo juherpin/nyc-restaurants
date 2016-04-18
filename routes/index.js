@@ -49,7 +49,7 @@ router.post('/comment', (req, res, next )=>{
     if (err){
       res.render('error',{error: err})
     }
-    res.redirect(`/restaurant/${req.body.restaurant}`);
+    res.redirect(`/`);
   })
 });
 
@@ -72,7 +72,7 @@ var getBestRestaurants = () =>{
   return deffered.promise
 }
 
-router.get('/restaurants', function(req, res, next) {
+router.get('/', function(req, res, next) {
   var restaurants = [];
   getBestRestaurants()
   .then((rest)=>{
@@ -90,9 +90,9 @@ router.get('/restaurants', function(req, res, next) {
 });
 
 router.get('/restaurant/:id', function(req, res, next) {
-  Restaurant.findOne(
-    {restaurant_id: req.params.id}, function(err,result) {
-
+  Restaurant.findOne({'restaurant_id':req.params.id}, function(err,result) {
+      console.log(result);
+      res.render('restaurant/index', {restaurant:result});
       });
   //
 });

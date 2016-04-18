@@ -1,0 +1,41 @@
+extends ../layout
+
+block content
+  div.card
+    h1 #{restaurant.name}
+    .row 
+      p #{restaurant.cuisine} ---> #{restaurant.borough}
+    .row
+    iframe(width='100%', height='450', frameborder='0', style='border:0', src='https://www.google.com/maps/embed/v1/view?key=AIzaSyDBx6UnIEPQ5AgXdGqwwZBHG1HjIBIK0Eg\
+        &center=' + restaurant.address.coord[1] + ',' +restaurant.address.coord[0] + '&zoom=20', allowfullscreen='')    
+  ul.collection.col.s3
+    each val, index in restaurant.grades
+      li.collection-item.avatar
+        span.title #{val.user}
+        p
+          | score :#{val.score}
+          br
+          | grade :#{val.grade} -- #{val.date}
+          br
+          | date :#{val.date}
+  .row
+        form.col.s12(action="/comment" method="post")
+          .row
+            .input-field.col.s12
+              input#first_name.validate(placeholder='Placeholder', type='text' name="user")
+              label(for='first_name') Name
+          .row
+            .input-field.col.s12
+              input#first_name.validate(placeholder='Placeholder', type='text' name="title")
+              label(for='first_name') Title
+          .row
+            .input-field.col.s12
+              input#first_name.validate(placeholder='Placeholder', type='text' name="comment")
+              label(for='first_name') Comment
+          .row
+            .input-field.col.s12(style="display: none")
+              input#disabled.validate(disabled='', value='#{restaurant._id}', type='text' name="restaurant")
+              label(for='disabled') Disabled
+          .row
+            button.btn.waves-effect.waves-light(type='submit', name='action')
+            | Submit

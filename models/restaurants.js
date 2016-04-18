@@ -20,7 +20,7 @@ const RestaurantsSchema = new mongoose.Schema({
         }
     ],
     name: { type : String },
-    restaurant_id: { type : Number}
+    restaurant_id: { type : String}
 });
 
 module.exports = mongoose.model('Restaurant', RestaurantsSchema);

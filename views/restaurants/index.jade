@@ -15,15 +15,14 @@ block content
               br
               |   #{val.grades.score}
             a.secondary-content(href='/restaurant/#{val.restaurant_id}')
-              i.large.material-icons zoom_in
+              i.large.material-icons grade
     ul.collection.col.s6
-        each val, index in ['zero', 'one', 'two']
+        each val, index in comments
           li.collection-item.avatar
-            img.circle(src='images/yuna.jpg', alt='')
-            span.title Title
+            span.title #{val.user}
             p
-              | First Line 
+              | #{val.title}
               br
-              |          Second Line
+              | #{val.comment}
             a.secondary-content(href='#!')
-              i.material-icons grade
+              i.material-icons #{val.date}
