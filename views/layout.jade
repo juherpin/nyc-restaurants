@@ -2,6 +2,17 @@ doctype html
 html
   head
     title= title
-    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css')
+    link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css")
+    script(src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js")
+    
   body
+    nav
+      .nav-wrapper
+        a.brand-logo(href='/') Logo
+        ul#nav-mobile.right.hide-on-med-and-down
+          li
+            a(href='sass.html') Sass
+          li
+            a(href='/restaurants') Restaurants
     block content

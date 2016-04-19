@@ -1,4 +1,28 @@
 extends ../layout
 
+
 block content
-  div Content here...
+  h1= title
+  p Welcome to #{title}
+  .row
+    ul.collection.col.s6
+        each val, index in restaurants
+          li.collection-item.avatar
+            h1 #{index+1}
+            span.title #{val.name}
+            p
+              |  #{val.cuisine}
+              br
+              |   #{val.grades.score}
+            a.secondary-content(href='/restaurant/#{val.restaurant_id}')
+              i.large.material-icons grade
+    ul.collection.col.s6
+        each val, index in comments
+          li.collection-item.avatar
+            span.title #{val.user}
+            p
+              | #{val.title}
+              br
+              | #{val.comment}
+            a.secondary-content(href='#!')
+              i.material-icons #{val.date}
